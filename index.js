@@ -5,19 +5,10 @@ var cors = require('cors');
 var querystring = require('querystring');
 var cookieParser = require('cookie-parser');
 
-var client_id = 'f99c5501413d405c9bbfb73075367646'; // Your client id
-var client_secret = 'fc4ff789724a48cfbd0758f0ed79062e'; // Your secret
+var client_id = process.env.CLIENT_ID; // Your client id
+var client_secret = process.env.CLIENT_SECRET; // Your secret
 var redirect_uri = 'http://localhost:8888/callback'; // Your redirect uri
 
-var redirect = '';
-
-
-if (process.env.NODE_ENV === "production"){
-  redirect = 'https://mood-mixer.herokuapp.com/User/#';
-}
-else {
-  redirect = 'http://localhost:3000/User/#';
-}
 
 /**
  * Generates a random string containing numbers and letters
@@ -106,7 +97,7 @@ app.get('/callback', function(req, res) {
         });
 
         // we can also pass the token to the browser to make requests from there
-        res.redirect( redirect  +
+        res.redirect( "http://localhost:3000/User/#"  +
           querystring.stringify({
             access_token: access_token,
             refresh_token: refresh_token
