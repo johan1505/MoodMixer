@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import {FaSpotify} from 'react-icons/fa'
-class HomePage extends Component {
+import {FaSpotify} from 'react-icons/fa';
 
+class HomePage extends Component {
+   
     render() {
         return (
             <div className="col main-section text-center fadeIn">
