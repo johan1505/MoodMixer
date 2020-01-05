@@ -12,10 +12,6 @@ else {
 }
 
 class HomePage extends Component {
-    checkRedirect = () => {
-        console.log(process.env.NODE_ENV);
-        console.log(redirect);
-    }
     render() {
         return (
             <div className="col main-section text-center fadeIn">
@@ -30,9 +26,6 @@ class HomePage extends Component {
                     <a className="btn" href={redirect}>   
                         <FaSpotify/> Connect to <br></br> Spotify
                     </a>
-                    <button onClick={() => this.checkRedirect()}>
-                        TEST
-                    </button>
                 </div>
             </div>
         );
