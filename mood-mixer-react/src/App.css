@@ -1,0 +1,137 @@
+@import url('https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap');
+
+html * {
+    font-family: 'Press Start 2P', cursive;
+}
+
+.main-wrapper{
+    margin-top: 5px;
+    padding: 40px;
+}
+
+body {
+    margin: 0;
+    background: rgb(2,0,36);
+    background: linear-gradient(90deg, rgba(2,0,36,1) 10%, rgba(72,156,127,1) 100%, rgba(0,212,255,1) 100%);
+}
+
+.main-section {
+}
+
+.main-section h1 {
+    margin: 0 auto;
+    font-size: 60px;
+}
+
+.main-section a {
+    margin: 0 auto;
+    font-size: 15px;
+    border-radius: 25px;
+}
+
+.userPage-section {
+}
+
+.selector {
+    margin: 20px;
+}
+
+.userPage-section h1{
+    font-size: 35px;
+}
+
+.paragraph {
+    color: #16a085;   
+    margin-top: 90px;
+    margin-bottom: 90px;
+    font-size: 20px;
+}
+
+.title {
+    color: #16a085;
+}
+
+.toggle-button {
+    width: 107px;
+    height: 107px;
+    border-radius: 50px;
+    margin: 10px;
+    font-size: 9px;
+}
+
+.select-buttton{
+    border-radius: 25px;
+    width: 250px;
+    height: 55px;
+    font-size: 15px;
+    margin: 10px;
+    padding-top: 15px;
+}
+
+
+.btn {  
+    background-color: #000000 ;
+    color: #16a085;
+}
+
+.btn.clicked{
+    background-color: #16a085 ;
+    color: #000000;
+}
+.btn:hover{
+    background-color: #16a085 ;
+    color: #000000;
+}
+  
+.icon {
+    font-size: 50px;
+}
+
+.errors{
+    padding: 10px;
+    color:  #000000;
+    font-size: 15px;
+}
+
+.error{
+    border-radius: 120px;
+    margin: 10px;
+    background-color: #ff5252;
+    padding: 15px;
+}
+
+.submit-form{
+    margin: 20px;
+    padding: 10px;
+} 
+
+.submit-form input{
+    font-size: 12px;
+    height: 40px;
+    width: 235px;
+}
+
+.submit-form button{
+    width: 235px;
+}
+
+.playlist-generated-box{
+    color: #16a085;
+    padding: 15px;
+    margin: 5px;
+    font-size: 12.5px;
+}
+
+.fadeIn{
+    -webkit-animation: fadein 1s;
+       -moz-animation: fadein 1s;
+        -ms-animation: fadein 1s;
+         -o-animation: fadein 1s;
+            animation: fadein 1s;
+ }
+ 
+ @keyframes fadein {
+     from { opacity: 0; }
+     to   { opacity: 1; }
+ }
+ 
