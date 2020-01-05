@@ -15,7 +15,7 @@ class HomePage extends Component {
                         Welcome to Mood Mixer! This is a website that creates Spotify playlists for you using your current moods and 
                         favorite music genres
                     </p>
-                    <a className="btn" href="http://localhost:8888/login">   
+                    <a className="btn" href="https://mood-mixer-backend.herokuapp.com/login">   
                         <FaSpotify/> Connect to <br></br> Spotify
                     </a>
                 </div>
