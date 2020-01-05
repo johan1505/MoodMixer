@@ -4,14 +4,14 @@
 /node_modules
 
 mood-mixer-react/node_modules
-mood-mixer-reac/.pnp
+mood-mixer-react/.pnp
 .pnp.js
 
 # testing
-mood-mixer-reac/coverage
+mood-mixer-react/coverage
 
 # production
-mood-mixer-reac/build
+mood-mixer-react/build
 
 # misc
 .DS_Store

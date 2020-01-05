@@ -138,7 +138,7 @@ app.get('/refresh_token', function(req, res) {
 if (process.env.NODE_ENV === "production"){
   app.use(express.static('mood-mixer-react/build'));
   app.get( '*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, "mood=mixer-react", "build", "index.html"))
+    res.sendFile(path.resolve(__dirname, "mood-mixer-react", "build", "index.html"))
   })
 }
 
