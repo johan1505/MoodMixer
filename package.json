@@ -4,6 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "node index.js",
+    "dev": "npm start --prefix mood-mixer-react",
     "heroku-postbuild": "npm install --prefix mood-mixer-react && npm run build --prefix mood-mixer-react"
   },
   "keywords": [],
