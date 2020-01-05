@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "dev": "npm start --prefix mood-mixer-react",
+    "server": "node index.js",
+    "client": "npm start --prefix mood-mixer-react",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
     "heroku-postbuild": "npm install --prefix mood-mixer-react && npm run build --prefix mood-mixer-react"
   },
   "keywords": [],
