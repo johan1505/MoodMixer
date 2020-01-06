@@ -46,8 +46,6 @@ class UserPage extends Component {
     
     creatingOff = ()=> this.setState({ creating: false, });
     
-    
-
     // Initlizes the UserPage component
     initializeComponent = () => {
         this.initializeSpotifyObject();
@@ -381,7 +379,7 @@ class UserPage extends Component {
                     }
                     {
                         this.state.playlistLink && 
-                        <a href={this.state.playlistLink} target="_blank"> 
+                        <a href={this.state.playlistLink} target="_blank" onClick={() => this.hidePlaylistGenerated()}> 
                                Listen on Spotify 
                         </a>
                     }
