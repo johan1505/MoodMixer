@@ -227,6 +227,7 @@ class UserPage extends Component {
             tracks.push(await this.mixMoodsAndGenres("j-idol"));
             tracks.push(await this.mixMoodsAndGenres("j-pop"));
             tracks.push(await this.mixMoodsAndGenres("mandopop"));
+            tracks.push(await this.mixMoodsAndGenres("anime"));
         }
         if(this.state.latin) {
             tracks.push(await this.mixMoodsAndGenres("latin"));
@@ -328,7 +329,7 @@ class UserPage extends Component {
             <HashRouter>
                 <Loading 
                     show={this.state.creating}
-                    color="black"
+                    color="green"
                     style={{ height: '10px' }}
                 
                 />

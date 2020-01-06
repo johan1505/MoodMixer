@@ -20,8 +20,7 @@ class HomePage extends Component {
                 </div>   
                 <div className = "row">
                     <p className="paragraph">
-                        Welcome to Mood Mixer! This is a website that creates Spotify playlists for you using your current moods and 
-                        favorite music genres
+                        Welcome to Mood Mixer! This is a website that creates Spotify playlists using your selection of moods and music genres
                     </p>
                     <a className="btn" href={redirect}>   
                         <FaSpotify/> Connect to <br></br> Spotify

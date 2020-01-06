@@ -10,7 +10,8 @@ html * {
 }
 
 body {
-    background: linear-gradient(0deg, rgba(2,0,36,1) 10%, rgba(72,156,127,1) 100%, rgba(0,212,255,1) 100%) fixed;
+    /* background: linear-gradient(0deg, rgba(2,0,36,1) 10%, rgba(72,156,127,1) 100%, rgba(0,212,255,1) 100%) fixed; */
+    background-color: #131c25;
 }
 
 .main-section {
@@ -47,7 +48,7 @@ body {
 }
 
 .title {
-    color: #0b1e1e;
+    color: #16a085;
 }
 
 .toggle-button {
