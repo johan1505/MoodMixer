@@ -1,6 +1,6 @@
 # Mood Mixer 
 
-This is a react web application that let's you create Spotify playlists based on your  moods and your favorite music genres.
+This is a react web application that let's you create Spotify playlists based on a selection of moods and music genres.
 Website can be accessed at: https://mood-mixer.herokuapp.com/
 
 Technologies Learned and Used:
