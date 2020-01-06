@@ -27,7 +27,8 @@ body {
     border-radius: 25px;
 }
 
-.userPage-section {
+.userPage-section a {
+    text-decoration: none;
 }
 
 .selector {

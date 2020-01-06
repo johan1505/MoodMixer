@@ -19,6 +19,7 @@ class UserPage extends Component {
     }
 
     state = {
+        playlistLink: null,
         playlistGenerated: false,
         creating: false,
 
@@ -86,7 +87,7 @@ class UserPage extends Component {
         let userId = await this.getUserId();
 
         // Create a playlist for the user
-        let playlistId = await this.createPlaylist(userId, playlistName);
+        let {playlistId, playlistLink} = await this.createPlaylist(userId, playlistName);
         
         // Retrieves tracks by genres and moods selected
         t0 = performance.now();
@@ -104,12 +105,21 @@ class UserPage extends Component {
         await this.populatePlaylist(playlistId, urisOfTracks);
         t1 = performance.now();
         console.log("Time taken to populate the playlist with tracks' uris: " + (t1 - t0) / 1000 + "s.");
+        this.setState({
+            playlistLink: playlistLink
+        });
         this.showPlaylistGenerated();
         this.creatingOff();
     }
 
     showPlaylistGenerated = () => this.setState({ playlistGenerated: true });
-    hidePlaylistGenerated = () => this.setState({ playlistGenerated: false });
+
+    hidePlaylistGenerated = () => {
+        this.setState({ 
+            playlistGenerated: false,
+            playlistLink:''  
+        });
+    }
 
     catchErrors = (playlistName) => {
         let errors = [];
@@ -258,14 +268,18 @@ class UserPage extends Component {
     // Creates a playlist in a user's account given the user id and the name of the playlist
     createPlaylist = async (userId, playlistName) => {
         let playlistId = '';
+        let playlistLink = '';
         var parameters = {
             name: playlistName  
         };
         await spotifyWebApi.createPlaylist(userId, parameters)
         .then((response) => {
             playlistId = response.id;
+            playlistLink= response.external_urls.spotify;
         });
-        return playlistId;
+        return {
+            playlistId, playlistLink
+        };
     }
 
     // initialized the spotify object with the access token
@@ -350,7 +364,7 @@ class UserPage extends Component {
                     {
                         this.state.creating && 
                         <div className="playlist-generated-box fadeIn">
-                            Creating Playlist... Please wait
+                            Creating Playlist ... Please wait
                         </div>
                     }
                     {
@@ -364,6 +378,12 @@ class UserPage extends Component {
                                 )
                             }
                         </div>
+                    }
+                    {
+                        this.state.playlistLink && 
+                        <a href={this.state.playlistLink} target="_blank"> 
+                               Listen on Spotify 
+                        </a>
                     }
                 </div>
             </HashRouter>
