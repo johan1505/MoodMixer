@@ -20,7 +20,7 @@ class UserPage extends Component {
 
     state = {
         playlistGenerated: false,
-        loadingBarShow: false,
+        creating: false,
 
         name : '',
         // Moods:
@@ -35,21 +35,16 @@ class UserPage extends Component {
         pop : false,
         hipHop : false,
         edm : false,
-        salsa : false,
-        jazz : false,
-        kPop : false,
+        oriental : false,
         latin : false,
 
         errors : undefined
     }
 
-    showLoadingBar = ()=> {
-        this.setState({ loadingBarShow: true })
-    }
+    creatingOn = ()=> this.setState({ creating: true, });
     
-    hideLoadingBar = ()=> {
-        this.setState({ loadingBarShow: false })
-    }
+    creatingOff = ()=> this.setState({ creating: false, });
+    
     
 
     // Initlizes the UserPage component
@@ -60,9 +55,9 @@ class UserPage extends Component {
     
     // Get tracks given the options selected
     generatePlaylist = async (e) => {
+
         // Show Loading bar
-        // this.hidePlaylistGenerated();
-        this.showLoadingBar();
+        this.creatingOn();
 
         let t0 = 0, t1 = 0; 
         e.preventDefault();
@@ -75,7 +70,7 @@ class UserPage extends Component {
             this.setState({
                 errors: errors
             });
-            this.hideLoadingBar();
+            this.creatingOff();
             return;
         }
         else {
@@ -109,12 +104,11 @@ class UserPage extends Component {
         await this.populatePlaylist(playlistId, urisOfTracks);
         t1 = performance.now();
         console.log("Time taken to populate the playlist with tracks' uris: " + (t1 - t0) / 1000 + "s.");
-        this.hideLoadingBar();
         this.showPlaylistGenerated();
+        this.creatingOff();
     }
 
     showPlaylistGenerated = () => this.setState({ playlistGenerated: true });
-
     hidePlaylistGenerated = () => this.setState({ playlistGenerated: false });
 
     catchErrors = (playlistName) => {
@@ -123,7 +117,6 @@ class UserPage extends Component {
         if (!playlistName) errors.push("Please enter a playlist name");
         if (this.noMoodSelected()) errors.push("Please select at least 1 mood");
         if (this.noGenreSelected()) errors.push("Please select at least 1 music genre");
-
         return errors;
     }
 
@@ -131,7 +124,7 @@ class UserPage extends Component {
     noMoodSelected = () => (!this.state.happy && !this.state.sad && !this.state.excited && !this.state.depressed && !this.state.upset);
 
     // Returns true if no music genre is selected
-    noGenreSelected = () => (!this.state.rock && !this.state.hipHop && !this.state.pop && !this.state.kPop && !this.state.latin && !this.state.jazz && !this.state.salsa && !this.state.edm);
+    noGenreSelected = () => (!this.state.rock && !this.state.hipHop && !this.state.pop && !this.state.oriental && !this.state.latin && !this.state.edm);
 
     // Populates a playlist given a playlist id and a list of tracks' uris
     populatePlaylist = async (playlistId, trackUris) => {
@@ -220,13 +213,18 @@ class UserPage extends Component {
             tracks.push(await this.mixMoodsAndGenres("techno"));
             tracks.push(await this.mixMoodsAndGenres("post-dubstep"));
         }
-        if(this.state.salsa) tracks.push(await this.mixMoodsAndGenres("salsa"));
-        if(this.state.jazz) tracks.push(await this.mixMoodsAndGenres("jazz"));
-        if(this.state.kPop) tracks.push(await this.mixMoodsAndGenres("k-pop"));
+        if(this.state.oriental) {
+            tracks.push(await this.mixMoodsAndGenres("k-pop"));
+            tracks.push(await this.mixMoodsAndGenres("cantopop"));
+            tracks.push(await this.mixMoodsAndGenres("j-idol"));
+            tracks.push(await this.mixMoodsAndGenres("j-pop"));
+            tracks.push(await this.mixMoodsAndGenres("mandopop"));
+        }
         if(this.state.latin) {
             tracks.push(await this.mixMoodsAndGenres("latin"));
             tracks.push(await this.mixMoodsAndGenres("latino"));
-            tracks.push(await this.mixMoodsAndGenres("reggaeton"));    
+            tracks.push(await this.mixMoodsAndGenres("reggaeton")); 
+            tracks.push(await this.mixMoodsAndGenres("salsa"));   
         }
 
         return tracks;
@@ -317,8 +315,8 @@ class UserPage extends Component {
         return (
             <HashRouter>
                 <Loading 
-                    show={this.state.loadingBarShow}
-                    color="green"
+                    show={this.state.creating}
+                    color="black"
                     style={{ height: '10px' }}
                 
                 />
@@ -350,6 +348,12 @@ class UserPage extends Component {
                         </div>
                     }
                     {
+                        this.state.creating && 
+                        <div className="playlist-generated-box fadeIn">
+                            Creating Playlist... Please wait
+                        </div>
+                    }
+                    {
                         this.state.errors && 
                         <div className="errors">
                             {
@@ -362,7 +366,6 @@ class UserPage extends Component {
                         </div>
                     }
                 </div>
-
             </HashRouter>
         );
     }
@@ -386,9 +389,7 @@ export default UserPage;
             <p className="title">pop: {this.state.pop + "!"}</p>
             <p className="title">hipHop: {this.state.hipHop + "!"}</p>
             <p className="title">edm: {this.state.edm + "!"}</p>
-            <p className="title">salsa: {this.state.salsa + "!"}</p>
-            <p className="title">jazz: {this.state.jazz + "!"}</p>
-            <p className="title">kPop: {this.state.kPop + "!"}</p>
+            <p className="title">oriental: {this.state.kPop + "!"}</p>
             <p className="title">latin: {this.state.latin + "!"}</p>
         </div>
     </div>
