@@ -2,16 +2,30 @@ import React, { Component } from 'react';
 import ToggleBUtton from './ToggleButton';
 import { FaSmile,  FaFrown, FaLaughSquint, FaSadCry, FaAngry} from 'react-icons/fa';
 
+
+const buttons = [
+    { state: 'happy', type: 'Happy', icon: <FaSmile className="icon"/>},
+    { state: 'excited', type: 'Excited', icon:<FaLaughSquint className="icon"/>},
+    { state: 'sad', type: 'Sad', icon: <FaFrown className="icon"/>},
+    { state: 'depressed', type: 'Depressed', icon:<FaSadCry className="icon"/>},
+    { state: 'upset', type: 'Upset', icon:<FaAngry className="icon"/>},
+]
+
 class MoodSelector extends Component {
+    
     render() {
         return (
             <div className="selector fadeIn">
-                <ToggleBUtton getState={() => this.props.getState("happy")} onClickToggleButton={()=>this.props.toggle("happy")} type={"Happy"} icon={<FaSmile className="icon"/>}></ToggleBUtton>
-                <ToggleBUtton getState={() => this.props.getState("excited")} onClickToggleButton={()=>this.props.toggle("excited")} type={"Excited"} icon={<FaLaughSquint className="icon"/>}></ToggleBUtton>
-                <ToggleBUtton getState={() => this.props.getState("sad")} onClickToggleButton={()=>this.props.toggle("sad")} type={"Sad"} icon={<FaFrown className="icon"/>}></ToggleBUtton>
-                <ToggleBUtton getState={() => this.props.getState("depressed")} onClickToggleButton={()=>this.props.toggle("depressed")} type={"Depressed"} icon={<FaSadCry className="icon"/>}></ToggleBUtton>
-                <ToggleBUtton getState={() => this.props.getState("upset")} onClickToggleButton={()=>this.props.toggle("upset")} type={"Upset"} icon={<FaAngry className="icon"/>}></ToggleBUtton>
-
+                {buttons.map((button, index) => (
+                    <ToggleBUtton 
+                        getState={() => this.props.getState(button.state)} 
+                        onClickToggleButton={()=>this.props.toggle(button.state)} 
+                        type={button.type} 
+                        key = {index}
+                        icon={button.icon}
+                    >
+                    </ToggleBUtton>
+                ))}
             </div>
         );
     }

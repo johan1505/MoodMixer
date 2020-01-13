@@ -351,7 +351,6 @@ class UserPage extends Component {
                     <NavLink to="/Genres" className="select-buttton btn">
                        <FaMusic/> Select Genres
                     </NavLink>
-
                     <Form generatePlaylist = {this.generatePlaylist} hidePlaylistGenerated={this.hidePlaylistGenerated}/> 
 
                     { 
